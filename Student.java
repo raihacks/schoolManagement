@@ -1,32 +1,31 @@
-public class Student {
-    private int studentId;
+public class Student{
+    private int id;
     private String name;
     private double grade;
-    private boolean feesPaid;
-    Student(int studentId, String name, double grade, boolean feesPaid) {
-        this.studentId = studentId;
+    private int feesPaid;
+    private int feesTotal;
+
+    public Student(int id, String name, double grade){
+        this.id = id;
         this.name = name;
         this.grade = grade;
-        this.feesPaid = feesPaid;
+        this.feesPaid = 0;
+        this.feesTotal = 30000;
     }
-    public void finalGrade() {
-        if (grade >= 90) {
-            System.out.println("Grade: A");
-        } else if (grade >= 75) {
-            System.out.println("Grade: B");
-        } else if (grade >= 60) {
-            System.out.println("Grade: C");
-        } else if (grade >= 35) {
-            System.out.println("Grade: D (Pass)");
-        } else {
-            System.out.println("Fail");
-        }
+
+    public void payFees(int amount){
+        feesPaid += amount;
     }
-    public void feeStatus() {
-        if (feesPaid) {
-            System.out.println("Fees is paid.");
-        } else {
-            System.out.println("Fees is not paid.");
-        }
+
+    public int getRemainingFees(){
+        return feesTotal - feesPaid;
+    }
+
+    public void printDetails(){
+        System.out.println("Student ID: " + id);
+        System.out.println("Name: " + name);
+        System.out.println("Grade: " + grade);
+        System.out.println("Fees Paid: " + feesPaid);
+        System.out.println("Remaining Fees: " + getRemainingFees());
     }
 }
